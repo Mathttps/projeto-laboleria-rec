@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { getClientsOrderByIdQuery } from "../repositories/pedido.repo.js";
-import { getClientByIdQuery, insertClients } from "../repositories/cliente.repo.js";
+import { pegarIDclientQ, insertClients } from "../repositories/cliente.repo.js";
 
 
 function formatarPedido(order) {
@@ -27,7 +27,7 @@ export async function pegarPedidoID(req, res) {
     const clientId = req.params.id;
 
     try {
-        const clientExists = await getClientByIdQuery(clientId);
+        const clientExists = await pegarIDclientQ(clientId);
         if (clientExists.rowCount === 0) {
             return res.status(404).send('Cliente não existe!');
         }

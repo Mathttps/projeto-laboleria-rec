@@ -1,6 +1,6 @@
 import { db } from "../database.js";
 
-export function getClientByIdQuery(clientId) {
+export function pegarIDclientQ(clientId) {
     return db.query('SELECT * FROM clients WHERE id=$1', [clientId]);
 }
 
