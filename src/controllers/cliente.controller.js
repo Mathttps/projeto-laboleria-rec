@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { getClientsOrderByIdQuery } from "../repositories/pedido.repo.js";
-import { pegarIDclientQ, insertClients } from "../repositories/cliente.repo.js";
+import { pegarIDclientQ, inserirCliente } from "../repositories/cliente.repo.js";
 
 
 function formatarPedido(order) {
@@ -16,7 +16,7 @@ export async function criarCliente(req, res) {
     const { name, address, phone } = req.body;
 
     try {
-        await insertClients(name, address, phone);
+        await inserirCliente(name, address, phone);
         res.sendStatus(201);
     } catch (err) {
         res.status(500).send(err.message);
